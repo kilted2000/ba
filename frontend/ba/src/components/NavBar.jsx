@@ -12,7 +12,6 @@ import {
 //import { faPaw, faBone } from "@fortawesome/free-solid-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./Profile";
-import PageLink from "./PageLink";
 import { Link } from "react-router-dom";
 //import AnchorLink from './AnchorLink';
 
@@ -99,7 +98,7 @@ const NavBar = () => {
                         navbar
                       >
                         <NavItem>
-                          <PageLink href={ Profile }>My Profile</PageLink>
+                          <Link href={ Profile }>My Profile</Link>
                         </NavItem>
                         <NavItem id="qsLogoutBtn">
                           {/* <PageLink

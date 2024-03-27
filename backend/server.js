@@ -17,6 +17,5 @@ app.get('/authorized', function (req, res) {
     res.send('Secured Resource');
 });
 
-app.listen(port);
+app.listen(port, () => console.log(`Server running on port ${port}`));
 
-console.log('Server currently running on port ', port);
