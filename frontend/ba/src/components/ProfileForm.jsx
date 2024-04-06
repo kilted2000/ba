@@ -114,7 +114,7 @@ const ProfileForm = ( ) => {
         </div>
       </div>
 
-      <button type="submit">Save Profile</button>
+      <button type="submit" onSubmit={handleSubmit}>Save Profile</button>
     </form>
   ));
 };
