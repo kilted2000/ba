@@ -1,8 +1,8 @@
 
-import express from 'express';
-import cors from 'cors';
+const express= require('express');
+const cors= require('cors');
 const app = express();
-//import { auth } from'express-oauth2-jwt-bearer';
+//const auth = require('express-oauth2-jwt-bearer');
 
 app.use(express.json());
 app.use(cors());
