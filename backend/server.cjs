@@ -11,6 +11,22 @@ app.use(cors());
 
 const port = process.env.PORT || 8080;
 
+
+async function main() {
+ 
+}
+
+
+main()
+.then(async () => {
+await prisma.$disconnect()
+})
+.catch(async (e) => {
+console.error(e)
+await prisma.$disconnect()
+process.exit(1)
+})
+
 // const jwtCheck = auth({
 //     audience: 'https://www.barkamigos.com/',
 //     issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
