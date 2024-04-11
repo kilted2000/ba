@@ -1,7 +1,9 @@
 
 const express= require('express');
 const cors= require('cors');
+import { PrismaClient } from "@prisma/client";
 const app = express();
+const prisma = new PrismaClient();
 //const auth = require('express-oauth2-jwt-bearer');
 
 app.use(express.json());
@@ -23,4 +25,8 @@ const port = process.env.PORT || 8080;
 // });
 
 app.get("/", async (req, res) => {
- 
+    res.json({ message: "success" });
+  });
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
+

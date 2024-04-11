@@ -15,4 +15,4 @@ datasource db {
 
 model UserProfile{
    id   Int    @id @default(autoincrement())
-}
+ 
