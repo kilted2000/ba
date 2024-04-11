@@ -15,4 +15,10 @@ datasource db {
 
 model UserProfile{
    id   Int    @id @default(autoincrement())
- 
+   firstName String
+   lastName String
+   email String @unique
+   dogName String
+   breed String
+   personality String
+}
