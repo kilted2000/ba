@@ -19,6 +19,4 @@ model UserProfile{
    lastName    String
    email       String @unique
    dogName     String
-   breed       String
-   personality String?
-}
+   breed       St
