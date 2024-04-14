@@ -1,7 +1,8 @@
 
 const express= require('express');
 const cors= require('cors');
-import { PrismaClient } from "@prisma/client";
+//import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require('@prisma/client');
 const app = express();
 const prisma = new PrismaClient();
 //const auth = require('express-oauth2-jwt-bearer');
@@ -11,9 +12,9 @@ app.use(cors());
 
 const port = process.env.PORT || 8080;
 
-
 async function main() {
- 
+  const allUsers = await prisma.userprofile.findMany()
+  console.log(allUsers)
 }
 
 
