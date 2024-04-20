@@ -32,24 +32,18 @@ const Hero = () => {
     fetchData();
   }, []);
 
-  const handleClick = () => {
-    fetchData();
-  };
-
 
   return (
     <>
       <div className="row testing ">
         <div className="col-md-6 col-sm-12 ">
           <h1 className="big-heading mb-5">Dog Walking is Better with Two.</h1>
-          <div>
+          <div style={{color: 'white'}} >
             {users.map((user) => (
               <p key={user.id}>
                 First Name: {user.firstName}, Last Name: {user.lastName}, Email: {user.email},Dog Name: {user.dogName}, Breed: {user.breed}, Personality: {user.personality}
               </p>
             ))}
-            <button onClick={handleClick}>Load All Users</button>
-           
           </div>
           <Link onClick={() => loginWithRedirect()}>Log In</Link>
 

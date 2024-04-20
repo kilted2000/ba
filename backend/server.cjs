@@ -53,7 +53,6 @@ const port = process.env.PORT || 8080;
 //     tokenSigningAlg: 'RS256'
 // });
 
-// // enforce on all endpoints
 // app.use(jwtCheck);
 
 // app.get('/authorized', function (req, res) {
