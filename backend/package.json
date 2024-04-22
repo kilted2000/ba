@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.cjs",
+  "main": "index.js",
   "scripts": {
-    "start": "npx nodemon server.cjs",
+    "start": "npx nodemon server.js",
+    "build": "npm run vercel-build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
