@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "index.cjs",
   "scripts": {
-    "start": "npx nodemon server.js",
+    "start": "npx nodemon index.cjs",
     "build": "npm run vercel-build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "prisma generate"
   },
   "author": "",
   "license": "ISC",

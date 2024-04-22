@@ -48,7 +48,7 @@ const port = process.env.PORT || 8080;
 
 
 // const jwtCheck = auth({
-//     audience: 'https://www.barkamigos.com/',
+//     audience: 'localhost:8080',
 //     issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
 //     tokenSigningAlg: 'RS256'
 // });
