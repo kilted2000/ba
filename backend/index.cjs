@@ -62,10 +62,10 @@ const port = process.env.PORT || 8080;
 app.get("/", async (req, res) => {
     res.json({ message: "success" });
   });
-  app.get('/users', async (req, res) => {
-    const allUsers = await prisma.userprofile.findMany();
-    res.json(allUsers);
-  });
+  // app.get('/users', async (req, res) => {
+  //   const allUsers = await prisma.userprofile.findMany();
+  //   res.json(allUsers);
+  // });
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
 module.exports = app;

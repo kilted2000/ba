@@ -5,7 +5,7 @@ const userController = require("../../controllers/userController");
 const router = express.Router();
 const cache = apicache.middleware;
 
-router.get("/users", cache("2 minutes"), userController.getAllUser);
+router.get("/users", cache("2 minutes"), userController.getAllUsers);
 
 router.get("/:userId", userController.getOneUser);
 
