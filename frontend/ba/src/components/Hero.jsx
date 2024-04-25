@@ -14,17 +14,35 @@ const Hero = () => {
 
   const { loginWithRedirect } = useAuth0();
 
+  // const fetchData = async () => {
+  //   const response = await fetch("http://localhost:8080/"); 
+  //   if (!response.ok) {
+  //     console.error('Server error:', await response.text());
+  //   } else {
+  //     try {
+  //       const data = await response.json();
+  //       setUsers(data);
+  //     } catch (error) {
+  //       console.error('Error parsing JSON:', error);
+  //     }
+  //   }
+  // };
+
   const fetchData = async () => {
-    const response = await fetch("http://localhost:8080/users"); 
-    if (!response.ok) {
-      console.error('Server error:', await response.text());
-    } else {
-      try {
-        const data = await response.json();
-        setUsers(data);
-      } catch (error) {
-        console.error('Error parsing JSON:', error);
+    try {
+      const response = await fetch("http://localhost:8080/"); 
+      if (!response.ok) {
+        console.error('Server error:', await response.text());
+      } else {
+        try {
+          const data = await response.json();
+          setUsers(data);
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+        }
       }
+    } catch (error) {
+      console.error('Fetch error:', error);
     }
   };
 
