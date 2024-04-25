@@ -13,7 +13,7 @@ const userRoutes = require('./src/routes/userRoutes.cjs');
 
 app.use(cors());
 app.use(express.json());
-app.use('/users', userRoutes);
+app.use('/', userRoutes);
 app.use(bodyParser.json());
 app.use(cache("2 minutes"));
 
