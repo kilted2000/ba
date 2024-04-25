@@ -9,14 +9,25 @@ const cache = apicache.middleware;
 const prisma = new PrismaClient();
 //const auth = require('express-oauth2-jwt-bearer');
 
+const userRoutes = require('./src/routes/userRoutes.cjs'); 
 
-
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+app.use('/users', userRoutes);
 app.use(bodyParser.json());
 app.use(cache("2 minutes"));
 
 const port = process.env.PORT || 8080;
+
+// app.get('/users', async (req, res) => {
+//   try {
+//     const allUsers = await prisma.userprofile.findMany();
+//     res.json(allUsers);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ status: 'FAILED', data: { error: error.message } });
+//   }
+// });
 
 // async function main() {
 //   const allUsers = await prisma.userprofile.findMany();
@@ -59,9 +70,9 @@ const port = process.env.PORT || 8080;
 //     res.send('Secured Resource');
 // });
 
-app.get("/", async (req, res) => {
-    res.json({ message: "success" });
-  });
+// app.get("/", async (req, res) => {
+//     res.json({ message: "success" });
+//   });
   // app.get('/users', async (req, res) => {
   //   const allUsers = await prisma.userprofile.findMany();
   //   res.json(allUsers);

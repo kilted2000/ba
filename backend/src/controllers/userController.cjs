@@ -1,4 +1,4 @@
-const userService = require("../services/userService");
+const userService = require("../services/userService.cjs");
 //modify the workoutService.js file
 const getAllUsers = (req, res) => {
     const { breed } = req.query;

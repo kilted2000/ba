@@ -1,5 +1,5 @@
 const { v4: uuid } = require("uuid");
-const User = require("../database/User");
+const User = require("../database/User.cjs");
 //performs crud operation I wrote in workout.js
 const getAllUsers = (filterParams) => {
   try {

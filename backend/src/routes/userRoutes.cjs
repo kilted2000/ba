@@ -1,6 +1,6 @@
 const express = require("express");
 const apicache = require("apicache");
-const userController = require("../../controllers/userController");
+const userController = require("../controllers/userController.cjs");
 
 const router = express.Router();
 const cache = apicache.middleware;
