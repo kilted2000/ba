@@ -18,4 +18,4 @@ router.delete("/:userId", userController.deleteOneUser);
 router.get("/", cache("2 minutes"),  userController.getAllUsers);
 
 
-module.exports = router;
+module.exports = router

@@ -123,5 +123,4 @@ module.exports = {
   getOneUser,
   createNewUser,
   updateOneUser,
-  deleteOneUser,
-};
+  deleteOneUser
