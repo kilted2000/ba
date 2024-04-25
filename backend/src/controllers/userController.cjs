@@ -3,7 +3,7 @@ const userService = require("../services/userService.cjs");
 const getAllUsers = (req, res) => {
     const { breed } = req.query;
   try {
-    const allUsers = userService.getAllUsers({ breed });
+    const allUsers = userprofile.getAllUsers({ breed });
     res.send({ status: "OK", data: allUsers });
   } catch (error) {
     res
@@ -123,4 +123,5 @@ module.exports = {
   getOneUser,
   createNewUser,
   updateOneUser,
-  deleteOneUser
+  deleteOneUser,
+};

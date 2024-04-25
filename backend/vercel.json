@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "index.js",
+        "src": "index.cjs",
         "use": "@now/node"
       }
     ],
     "routes": [
       {
-        "src": "/routes/userRoutes.js(.*)",
-        "dest": "index.js"
+        "src": "/routes/userRoutes.cjs(.*)",
+        "dest": "index.cjs"
       }
     ]
   }

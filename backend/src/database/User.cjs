@@ -1,19 +1,41 @@
-//const DB = require("./db.json"); convert to use with prisma and postgres
+//const DB = require("./db.json"); 
 //const { saveToDatabase } = require("./utils");
 //includes db commands
-const getAllUsers = (filterParams) => {
+// const getAllUsers = (filterParams) => {
+//   try {
+//     let users = DB.users;
+//     if (filterParams.breed) {
+//       return DB.users.filter((breed) =>
+//         user.breed.toLowerCase().includes(filterParams.breed)
+//       );}
+//     return users;
+//   } catch (error) {
+//     throw { status: 500, message: error };
+//   }
+// };
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+const getAllUsers = async (filterParams) => {
   try {
-    let users = DB.users;
+    let users;
     if (filterParams.breed) {
-      return DB.users.filter((breed) =>
-        user.breed.toLowerCase().includes(filterParams.breed)
-      );}
+      users = await prisma.userprofile.findMany({
+        where: {
+          breed: {
+            contains: filterParams.breed,
+            mode: 'insensitive', // This makes the filter case-insensitive
+          },
+        },
+      });
+    } else {
+      users = await prisma.userprofile.findMany();
+    }
     return users;
   } catch (error) {
     throw { status: 500, message: error };
   }
 };
-
 const getOneUser = (userId) => {
   try {
     const user = DB.userProfile.find((user.id));
