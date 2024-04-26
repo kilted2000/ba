@@ -29,6 +29,7 @@ const getAllUsers = async (filterParams) => {
       });
     } else {
       users = await prisma.userprofile.findMany();
+      
     }
     return users;
   } catch (error) {

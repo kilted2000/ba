@@ -1,9 +1,9 @@
 const userService = require("../services/userService.cjs");
 //modify the workoutService.js file
-const getAllUsers = (req, res) => {
+const getAllUsers = async (req, res) => {
     const { breed } = req.query;
   try {
-    const allUsers =  userService.getAllUsers({ breed });
+    const allUsers = await userService.getAllUsers({ breed });
     res.send({ status: "OK", data: allUsers });
        
   } catch (error) {

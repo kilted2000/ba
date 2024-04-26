@@ -1,9 +1,10 @@
 const { v4: uuid } = require("uuid");
 const User = require("../database/User.cjs");
 //performs crud operation I wrote in workout.js
-const getAllUsers = (filterParams) => {
+const getAllUsers = async (filterParams) => {
   try {
-    const allUsers = User.getAllUsers(filterParams);
+    const allUsers = await User.getAllUsers(filterParams);
+    console.log(allUsers);
     return allUsers;
   } catch (error) {
     throw error;
