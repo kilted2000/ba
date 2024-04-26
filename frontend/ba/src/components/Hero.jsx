@@ -36,7 +36,7 @@ const Hero = () => {
       } else {
         try {
           const data = await response.json();
-          setUsers(data);
+          setUsers(Object.values(data.data));
         } catch (error) {
           console.error('Error parsing JSON:', error);
         }
@@ -57,6 +57,7 @@ const Hero = () => {
         <div className="col-md-6 col-sm-12 ">
           <h1 className="big-heading mb-5">Dog Walking is Better with Two.</h1>
           <div style={{color: 'white'}} >
+          {console.log(users)}
             {users.map((user) => (
               <p key={user.id}>
                 First Name: {user.firstName}, Last Name: {user.lastName}, Email: {user.email},Dog Name: {user.dogName}, Breed: {user.breed}, Personality: {user.personality}

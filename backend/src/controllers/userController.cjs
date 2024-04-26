@@ -3,12 +3,14 @@ const userService = require("../services/userService.cjs");
 const getAllUsers = (req, res) => {
     const { breed } = req.query;
   try {
-    const allUsers = userService.getAllUsers({ breed });
+    const allUsers =  userService.getAllUsers({ breed });
     res.send({ status: "OK", data: allUsers });
+       
   } catch (error) {
     res
       .status(error?.status || 500)
-      .send({ status: "FAILED", data: { error: error?.message || error } });
+      .send({ status: "FAILED", data: { error: error?.message || error } })
+      
   }
 };
 
@@ -25,7 +27,7 @@ const getOneUser = (req, res) => {
       });
   }
   try {
-    const user = userService.getOneUser(userId);
+    const user =  userService.getOneUser(userId);
     res.send({ status: "OK", data: user });
   } catch (error) {
     res
