@@ -14,7 +14,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const getOneUser = (req, res) => {
+const getOneUser = async (req, res) => {
   const {
     params: { userId },
   } = req;
@@ -27,7 +27,7 @@ const getOneUser = (req, res) => {
       });
   }
   try {
-    const user =  userService.getOneUser(userId);
+    const user = await userService.getOneUser(userId);
     res.send({ status: "OK", data: user });
   } catch (error) {
     res
@@ -36,7 +36,7 @@ const getOneUser = (req, res) => {
   }
 };
 
-const createNewUser = (req, res) => {
+const createNewUser = async (req, res) => {
   const { body } = req;
   if (
     !body.firstName ||
@@ -57,7 +57,7 @@ const createNewUser = (req, res) => {
       });
     return;
   }
-  const newUser = {
+  const newUser = await {
     firstName: body.firstName ,
     lastName: body.lastName ,
     email: body.email ,
@@ -66,7 +66,7 @@ const createNewUser = (req, res) => {
     personality: body.personality,
   };
   try {
-    const createdUser = userService.createNewUser(newUser);
+    const createdUser = await userService.createNewUser(newUser);
     res.status(201).send({ status: "OK", data: createdUser });
   } catch (error) {
     res
@@ -75,7 +75,7 @@ const createNewUser = (req, res) => {
   }
 };
 
-const updateOneUser = (req, res) => {
+const updateOneUser = async (req, res) => {
   const {
     body,
     params: { userId },
@@ -89,7 +89,7 @@ const updateOneUser = (req, res) => {
       });
   }
   try {
-    const updatedUser = userService.updateOneUser(userId, body);
+    const updatedUser = await userService.updateOneUser(userId, body);
     res.send({ status: "OK", data: updatedUser });
   } catch (error) {
     res
@@ -98,7 +98,7 @@ const updateOneUser = (req, res) => {
   }
 };
 
-const deleteOneUser = (req, res) => {
+const deleteOneUser = async (req, res) => {
   const {
     params: { userId },
   } = req;
@@ -111,7 +111,7 @@ const deleteOneUser = (req, res) => {
       });
   }
   try {
-    userService.deleteOneUser(userId);
+   await userService.deleteOneUser(userId);
     res.status(204).send({ status: "OK" });
   } catch (error) {
     res
