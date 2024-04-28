@@ -4,7 +4,6 @@ const User = require("../database/User.cjs");
 const getAllUsers = async (filterParams) => {
   try {
     const allUsers = await User.getAllUsers(filterParams);
-    console.log(allUsers);
     return allUsers;
   } catch (error) {
     throw error;
