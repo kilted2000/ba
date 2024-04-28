@@ -29,7 +29,7 @@ const View = () => {
     }, []);
   
     return(
-    <div style={{color: 'white'}} >
+    <div style={{border: '3 solid black'}} >
          
     {users.map((user) => (
       <p key={user.id}>

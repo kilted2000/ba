@@ -28,7 +28,7 @@ const ProfileDisplay = () => {
       }, []);
 
     return (
-        <div style={{color: 'white'}} >
+        <div style={{border: '3 solid black'}} >
          
         <h3>Your Profile</h3>
           <p key={user.id}>
