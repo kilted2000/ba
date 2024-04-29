@@ -1,4 +1,4 @@
-const { v4: uuid } = require("uuid");
+
 const User = require("../database/User.cjs");
 //performs crud operation I wrote in workout.js
 const getAllUsers = async (filterParams) => {
@@ -22,9 +22,6 @@ const getOneUser = async (userId) => {
 const createNewUser = async (newUser) => {
   const userToInsert = await {
     ...newUser,
-    id: uuid(),
-    createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
-    updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
   };
   try {
     const createdUser = await User.createNewUser(userToInsert);
