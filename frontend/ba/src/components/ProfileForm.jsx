@@ -23,15 +23,17 @@ const ProfileForm = ( ) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const updatedProfile = { firstName, lastName, email, dogName, breed, personality };
-
+    const newUser = { firstName, lastName, email, dogName, breed, personality };
+    console.log(newUser)
     fetch('/api/profile', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(updatedProfile)
+      body: JSON.stringify(newUser)
+      
     })
+    
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
