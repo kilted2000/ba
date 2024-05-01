@@ -7,7 +7,7 @@ const ProfileDisplay = () => {
     const fetchData = async () => {
         try {
             //update fetch url
-          const response = await fetch("http://localhost:8080/"); 
+          const response = await fetch("http://localhost:8080/:userId"); 
           if (!response.ok) {
             console.error('Server error:', await response.text());
           } else {

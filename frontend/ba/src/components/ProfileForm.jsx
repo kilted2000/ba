@@ -14,69 +14,35 @@ const ProfileForm = ( ) => {
   const [dogName, setDogName] = useState('');
   const [breed, setBreed] = useState('');
   const [personality, setPersonality] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
+
 //   function handlePhotoUpload(result) {
 //     console.log(result);
 //   }
 
-const handleSubmit = event => {
-  event.preventDefault();
-  const newUser = { firstName, lastName, email, dogName, breed, personality };
-  fetch("http://localhost:8080/", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newUser)
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Assuming the server returns an object with the new user's id in the `id` property
-    const userId = data.id;
-    // Fetch the data for the new user
-    return fetch(`http://localhost:8080/${userId}`);
-  })//check fetch at 8080/:userId and connect user to auth token
-  .then(response => response.json())
-  .then(user => {
-    console.log(user);
-    setIsSubmitted(true); // Update the state variable when the user data is fetched
-    setUserInfo(user); // Update the user info state variable with the fetched user data
-  })
-  .catch(error => console.error(error));
-};
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   const newUser = { firstName, lastName, email, dogName, breed, personality };
-  //   console.log(newUser)
-  //   fetch("http://localhost:8080/", {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newUser)
+
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const newUser = { firstName, lastName, email, dogName, breed, personality };
+    console.log(newUser)
+    fetch("http://localhost:8080/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
       
-  //   })
+    })
     
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  //     .catch(error => console.error(error));
-  // };
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+  };
 
   return (
     isAuthenticated && (
-      isSubmitted && userInfo ? (
-        <div>
-          <h1>User Info</h1>
-          <p>First Name: {userInfo.firstName}</p>
-          <p>Last Name: {userInfo.lastName}</p>
-          <p>Email: {userInfo.email}</p>
-          <p>Dog Name: {userInfo.dogName}</p>
-          <p>Breed: {userInfo.breed}</p>
-          <p>Personality: {userInfo.personality}</p>
-        </div>
-      ) : (
+     (
     <form onSubmit={handleSubmit}>
       <label>
         First Name:
@@ -157,6 +123,7 @@ const handleSubmit = event => {
   ))
 )
 };
+
 
 
 ProfileForm.propTypes = {
