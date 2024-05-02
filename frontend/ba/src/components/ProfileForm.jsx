@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 //pass {images} as a prop to ProfileForm
-const ProfileForm = ( ) => {
+const ProfileForm = () => {
   const { isAuthenticated } = useAuth0();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -34,7 +34,7 @@ const ProfileForm = ( ) => {
       body: JSON.stringify(newUser)
       
     })
-    
+   
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

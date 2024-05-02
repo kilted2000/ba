@@ -1,16 +1,19 @@
 //import React from 'react';
-
+import  { useState } from 'react';
 import ProfileForm from "./ProfileForm";
 import ProfileDisplay from "./ProfileDisplay";
+
 const Profile = () => {
-    return(
-        <>
-{/* is handlesubmit clicked? If no then render */}
-<ProfileForm />
-{/* is yes then render ProfileDisplay */}
-<ProfileDisplay />
-</>
-)};
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const handleFormSubmit = () => {
+    setIsSubmitted(true);
+  };
+  return (
+    <>
+      {isSubmitted ? <ProfileDisplay /> : <ProfileForm onSubmit={handleFormSubmit} />}
+    </>
+  );
+};
 
-export default Profile
+export default Profile;
