@@ -7,7 +7,7 @@ const cache = apicache.middleware;
 
 router.get("/", cache("2 minutes"), userController.getAllUsers);
 
-router.get("/:userId", userController.getOneUser);
+router.get("/:userId", jwtCheck, userController.getOneUser);
 
 router.post("/", userController.createNewUser);
 

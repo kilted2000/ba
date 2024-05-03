@@ -13,28 +13,40 @@ const getAllUsers = async (req, res) => {
       
   }
 };
-
 const getOneUser = async (req, res) => {
-  const {
-    params: { userId },
-  } = req;
-  if (!userId) {
-    res
-      .status(400)
-      .send({
-        status: "FAILED",
-        data: { error: "Parameter ':userId' can not be empty" },
-      });
+  const { user } = req;
+  if (!user) {
+    res.status(401).send({ status: "FAILED", data: { error: "Unauthorized" } });
+    return;
   }
   try {
-    const user = await userService.getOneUser(userId);
+    const user = await userService.getOneUser(user.sub);
     res.send({ status: "OK", data: user });
   } catch (error) {
-    res
-      .status(error?.status || 500)
-      .send({ status: "FAILED", data: { error: error?.message || error } });
+    res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
   }
 };
+// const getOneUser = async (req, res) => {
+//   const {
+//     params: { userId },
+//   } = req;
+//   if (!userId) {
+//     res
+//       .status(400)
+//       .send({
+//         status: "FAILED",
+//         data: { error: "Parameter ':userId' can not be empty" },
+//       });
+//   }
+//   try {
+//     const user = await userService.getOneUser(userId);
+//     res.send({ status: "OK", data: user });
+//   } catch (error) {
+//     res
+//       .status(error?.status || 500)
+//       .send({ status: "FAILED", data: { error: error?.message || error } });
+//   }
+// };
 
 const createNewUser = async (req, res) => {
   const { body } = req;

@@ -7,7 +7,7 @@ const { PrismaClient } = require('@prisma/client');
 const app = express();
 const cache = apicache.middleware;
 const prisma = new PrismaClient();
-//const auth = require('express-oauth2-jwt-bearer');
+const auth = require('express-oauth2-jwt-bearer');
 
 const userRoutes = require('./src/routes/userRoutes.cjs'); 
 
@@ -58,17 +58,17 @@ const port = process.env.PORT || 8080;
 
 
 
-// const jwtCheck = auth({
-//     audience: 'localhost:8080',
-//     issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
-//     tokenSigningAlg: 'RS256'
-// });
+const jwtCheck = auth({
+    audience: 'localhost:8080',
+    issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
+    tokenSigningAlg: 'RS256'
+});
 
-// app.use(jwtCheck);
+app.use(jwtCheck);
 
-// app.get('/authorized', function (req, res) {
-//     res.send('Secured Resource');
-// });
+app.get('/authorized', function (req, res) {
+    res.send('Secured Resource');
+});
 
 // app.get("/", async (req, res) => {
 //     res.json({ message: "success" });
