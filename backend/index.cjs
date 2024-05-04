@@ -7,13 +7,13 @@ const { PrismaClient } = require('@prisma/client');
 const app = express();
 const cache = apicache.middleware;
 const prisma = new PrismaClient();
-const auth = require('express-oauth2-jwt-bearer');
+const { auth } = require('express-oauth2-jwt-bearer');
 
 const userRoutes = require('./src/routes/userRoutes.cjs'); 
 
 app.use(cors());
 app.use(express.json());
-app.use('/', userRoutes);
+
 app.use(bodyParser.json());
 app.use(cache("2 minutes"));
 
@@ -65,7 +65,7 @@ const jwtCheck = auth({
 });
 
 app.use(jwtCheck);
-
+app.use('/', userRoutes);
 app.get('/authorized', function (req, res) {
     res.send('Secured Resource');
 });
