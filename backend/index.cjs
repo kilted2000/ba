@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const apicache = require("apicache");
 const { PrismaClient } = require('@prisma/client');
 const app = express();
-const cache = apicache.middleware;
+//const cache = apicache.middleware;
 const prisma = new PrismaClient();
 const { auth } = require('express-oauth2-jwt-bearer');
 
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(bodyParser.json());
-app.use(cache("2 minutes"));
+//app.use(cache("2 minutes"));
 
 const port = process.env.PORT || 8080;
 
@@ -70,9 +70,9 @@ app.get('/authorized', function (req, res) {
     res.send('Secured Resource');
 });
 
-// app.get("/", async (req, res) => {
-//     res.json({ message: "success" });
-//   });
+app.get("/", async (req, res) => {
+    res.json({ message: "success" });
+  });
   // app.get('/users', async (req, res) => {
   //   const allUsers = await prisma.userprofile.findMany();
   //   res.json(allUsers);

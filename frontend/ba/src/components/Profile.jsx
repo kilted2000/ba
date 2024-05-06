@@ -92,7 +92,7 @@ const Profile = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   // const handleFormSubmit = (profileData) => {
   //   // Update the state with the submitted profile data
