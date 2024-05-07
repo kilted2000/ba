@@ -10,7 +10,7 @@ const ProfileForm = () => {
   const { isAuthenticated } = useAuth0();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState([]);
+  const [email, setEmail] = useState('');
   const [dogName, setDogName] = useState('');
   const [breed, setBreed] = useState('');
   const [personality, setPersonality] = useState('');
@@ -118,7 +118,7 @@ const ProfileForm = () => {
         </div>
       </div>
 
-      <button type="submit" onSubmit={handleSubmit}>Save Profile</button>
+      <button type="submit" >Save Profile</button>
     </form>
   ))
 )
