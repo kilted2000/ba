@@ -6,15 +6,15 @@ const userController = require("../controllers/userController.cjs");
 const router = express.Router();
 const cache = apicache.middleware;
 
-router.get("/", cache("2 minutes"), userController.getAllUsers);
+router.get("/api/users", cache("2 minutes"), userController.getAllUsers);
 
-router.get("/:userId", userController.getOneUser);
+router.get("/api/users/:userId", userController.getOneUser);
 
-router.post("/", userController.createNewUser);
+router.post("/api/users", userController.createNewUser);
 
-router.patch("/:userId", userController.updateOneUser);
+router.patch("/api/users/:userId", userController.updateOneUser);
 
-router.delete("/:userId", userController.deleteOneUser);
+router.delete("/api/users/:userId", userController.deleteOneUser);
 
 //router.get("/users", cache("2 minutes"),  userController.getAllUsers);
 

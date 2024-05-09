@@ -22,7 +22,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Page />} />
-         <Route path="/api/auth/login" element={<Profile />} /> 
+         {/* <Route path="/api/auth/login" element={<Profile />} />  */}
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/callback" element={<Callback />} /> */}
       </Routes>
