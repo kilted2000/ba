@@ -1,12 +1,12 @@
 const express = require("express");
-const apicache = require("apicache");
+//const apicache = require("apicache");
 const userController = require("../controllers/userController.cjs");
 
 
 const router = express.Router();
-const cache = apicache.middleware;
+//const cache = apicache.middleware;
 
-router.get("/api/users", cache("2 minutes"), userController.getAllUsers);
+router.get("/api/users", userController.getAllUsers);
 
 router.get("/api/users/:userId", userController.getOneUser);
 

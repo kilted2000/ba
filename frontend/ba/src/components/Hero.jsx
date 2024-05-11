@@ -71,7 +71,7 @@ const Hero = () => {
           </button>
 
           <button type="button" className="btn btn-dark btn-lg download-button">
-            <FontAwesomeIcon icon={faBone} /> Sign Up
+            <FontAwesomeIcon icon={faBone} />Sign Up
           </button>
         </div>
         <div className="phone-img col-md-6 col-sm-12">
