@@ -66,7 +66,7 @@ import { useState, useEffect } from 'react';
 //import ProfileForm from "./ProfileForm";
 import ProfileDisplay from "./ProfileDisplay";
 import { useParams } from 'react-router-dom';
-
+import Loading from './Loading';
 const Profile = () => {
   //const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +75,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/${userId}`); 
+        const response = await fetch(`http://localhost:8080/api/users/${userId}`); 
         if (!response.ok) {
           console.error('Server error:', await response.text());
         } else {
@@ -100,7 +100,7 @@ const Profile = () => {
   // };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Render a loading message while data is being fetched
+    return (<Loading />) // Render a loading message while data is being fetched
   } else {
     return <ProfileDisplay userProfile={userProfile} />; // Render the profile display once data is fetched
   }

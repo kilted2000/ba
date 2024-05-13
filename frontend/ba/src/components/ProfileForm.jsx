@@ -26,7 +26,7 @@ const ProfileForm = () => {
     event.preventDefault();
     const newUser = { firstName, lastName, email, dogName, breed, personality };
     console.log(newUser)
-    fetch("http://localhost:8080/", {
+    fetch("http://localhost:8080/api/users/", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
