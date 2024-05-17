@@ -72,7 +72,7 @@ app.get('/authorized', function (req, res) {
 });
 
 app.get("/", async (req, res) => {
-    res.json({ message: "success" });
+    res.json({ message: "Great Job! It works!" });
   });
   // app.get('/users', async (req, res) => {
   //   const allUsers = await prisma.userprofile.findMany();

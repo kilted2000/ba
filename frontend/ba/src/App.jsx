@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import { Route, Routes } from "react-router-dom";
 import  Page from "./Page";
 import  Profile from "./components/Profile";
+import  View from "./components/View";
 //import { Callback } from "./components/Callback";
 
 import "./App.css";
@@ -24,7 +25,7 @@ function App() {
         <Route path="/" element={<Page />} />
          {/* <Route path="/api/auth/login" element={<Profile />} />  */}
         <Route path="/profile" element={<Profile />} />
-        {/* <Route path="/callback" element={<Callback />} /> */}
+         <Route path="/findingamigos" element={<View />} /> 
       </Routes>
       {/* <div>
       <AdvancedImage cldImg={myImage} />

@@ -31,7 +31,7 @@ const NavBar = () => {
       // },
     });
   };
-  //ask code connector and 100devs about routig error//
+
 
    const handleSignIn = async () => {
     await loginWithRedirect({
