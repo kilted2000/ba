@@ -24,6 +24,7 @@ const Profile = () => {
          
           }
         });
+        console.log('Token:', token); 
         const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
