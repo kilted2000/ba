@@ -11,10 +11,18 @@ const { auth } = require('express-oauth2-jwt-bearer');
 
 const userRoutes = require('./src/routes/userRoutes.cjs'); 
 
-app.use(cors());
+//app.use(cors());
+//app.use(express.json());
+
+
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+app.use(bodyParser.json());
 app.use(express.json());
 
-app.use(bodyParser.json());
 //app.use(cache("2 minutes"));
 
 const port = process.env.PORT || 8080;
@@ -59,7 +67,7 @@ const port = process.env.PORT || 8080;
 
 
 const jwtCheck = auth({
-    audience: 'localhost:8080',
+    audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
     issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
     algorithms: ['RS256'],
     jwksUri: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/.well-known/jwks.json'
@@ -71,13 +79,7 @@ app.get('/authorized', function (req, res) {
     res.send('Secured Resource');
 });
 
-const cors = require('cors');
 
-app.use(cors({
-  origin: 'http://localhost:5173', 
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-}));
 
 
 app.get("/", async (req, res) => {

@@ -1,50 +1,115 @@
 
-
-// export default Profile;
 import { useState, useEffect } from 'react';
-//import ProfileForm from "./ProfileForm";
 import { useAuth0 } from '@auth0/auth0-react';
 import ProfileDisplay from "./ProfileDisplay";
 import { useParams } from 'react-router-dom';
 import Loading from './Loading';
+
 const Profile = () => {
-  //const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { getAccessTokenSilently } = useAuth0();
   const [userProfile, setUserProfile] = useState(null);
   const { userId } = useParams();
 
   useEffect(() => {
-    (async () => {
+    let isMounted = true; // Track if the component is mounted
+
+    const fetchData = async () => {
       try {
         const token = await getAccessTokenSilently({
           authorizationParams: {
             audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
             scope: 'read:current_user',
-         
           }
         });
-        console.log('Token:', token); 
+        console.log('Token:', token);
+
         const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setUserProfile(await response.json());
-        setIsLoading(false);
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+
+        const userData = await response.json();
+
+        if (isMounted) {
+          setUserProfile(userData);
+          setIsLoading(false);
+        }
       } catch (e) {
         console.error(e);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
-    })();
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false; // Cleanup function to set the mounted flag to false
+    };
   }, [getAccessTokenSilently, userId]);
 
   if (isLoading) {
-    return  (<Loading />)
-  }else {
-       return <ProfileDisplay userProfile={userProfile} />;
+    return <Loading />;
+  } else {
+    return <ProfileDisplay userProfile={userProfile} />;
+  }
+};
 
-}
-}
+export default Profile;
+
+// // export default Profile;
+// import { useState, useEffect } from 'react';
+// //import ProfileForm from "./ProfileForm";
+// import { useAuth0 } from '@auth0/auth0-react';
+// import ProfileDisplay from "./ProfileDisplay";
+// import { useParams } from 'react-router-dom';
+// import Loading from './Loading';
+// const Profile = () => {
+//   //const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const { getAccessTokenSilently } = useAuth0();
+//   const [userProfile, setUserProfile] = useState(null);
+//   const { userId } = useParams();
+
+//   useEffect(() => {
+//     (async () => {
+//       try {
+//         const token = await getAccessTokenSilently({
+//           authorizationParams: {
+//             audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
+//             scope: 'read:current_user',
+            
+//           }
+//         });
+//         console.log('Token:', token); 
+//         const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         });
+//         setUserProfile(await response.json());
+//         setIsLoading(false);
+//       } catch (e) {
+//         console.error(e);
+//       }
+//     })();
+//   }, [getAccessTokenSilently, userId]);
+
+//   if (isLoading) {
+//     return  (<Loading />)
+//   }else {
+//        return <ProfileDisplay userProfile={userProfile} />;
+
+// }
+// }
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -88,4 +153,4 @@ const Profile = () => {
   // );
 //};
 
-export default Profile;
+//export default Profile;
