@@ -8,7 +8,7 @@ const View = () => {
   
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/"); 
+        const response = await fetch("http://localhost:8080/api/users/"); 
         if (!response.ok) {
           console.error('Server error:', await response.text());
         } else {
