@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<Page />} />
          {/* <Route path="/api/auth/login" element={<Profile />} />  */}
         <Route path="/profile" element={<Profile />} />
-         <Route path="/users" element={<View />} /> 
+         <Route path="api/auth/users" element={<View />} /> 
       </Routes>
       {/* <div>
       <AdvancedImage cldImg={myImage} />
