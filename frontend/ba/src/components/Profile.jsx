@@ -12,7 +12,7 @@ const Profile = () => {
   const { userId } = useParams();
 
   useEffect(() => {
-    let isMounted = true; // Track if the component is mounted
+    let isMounted = true; 
 
     const fetchData = async () => {
       try {
@@ -52,7 +52,7 @@ const Profile = () => {
     fetchData();
 
     return () => {
-      isMounted = false; // Cleanup function to set the mounted flag to false
+      isMounted = false; 
     };
   }, [getAccessTokenSilently, userId]);
 
