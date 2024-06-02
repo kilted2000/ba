@@ -79,4 +79,57 @@ module.exports = app;
 // // });
 
 // // async function main() {
-// //   const allUsers = await prisma.userprofile.findMan
+// //   const allUsers = await prisma.userprofile.findMany();
+// //   app.get('/users', (req, res) => {
+// //     res.json(allUsers);
+// //   });
+// // }
+// // main()
+// //   .then(() => {
+// //     console.log('Starting server...');
+// //     app.listen(port, () => {
+// //       console.log(`Server running on port ${port}`);
+// //     });
+// //   })
+
+// // main()
+// //   .then(() => {
+// //     app.listen(port, () => {
+// //       console.log(`Server running on port ${port}`);
+// //     });
+// //   })
+//   // .catch(async (e) => {
+//   //   console.error(e);
+//   //   await prisma.$disconnect();
+//   //   process.exit(1);
+//   // });
+
+
+
+
+// const jwtCheck = auth({
+//     audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
+//     issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
+//     algorithms: ['RS256'],
+//     jwksUri: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/.well-known/jwks.json'
+// });
+
+// app.use(jwtCheck);
+// app.use('/', userRoutes);
+// app.get('/authorized', function (req, res) {
+//     res.send('Secured Resource');
+// });
+
+
+
+
+// app.get("/", async (req, res) => {
+//     res.json({ message: "Great Job! It works!" });
+//   });
+//   // app.get('/users', async (req, res) => {
+//   //   const allUsers = await prisma.userprofile.findMany();
+//   //   res.json(allUsers);
+//   // });
+// app.listen(port, () => console.log(`Server running on port ${port}`));
+
+// module.exports = app;
