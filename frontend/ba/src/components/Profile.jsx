@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import ProfileDisplay from "./ProfileDisplay";
+import ProfileForm from './ProfileForm';
 import { useParams } from 'react-router-dom';
 import Loading from './Loading';
 
@@ -20,6 +21,7 @@ const Profile = () => {
           authorizationParams: {
             audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
             scope: 'read:users',
+            prompt: 'consent',
           }
         });
         console.log('Token:', token);
@@ -59,8 +61,8 @@ const Profile = () => {
   if (isLoading) {
     return <Loading />;
   } else {
-    return <ProfileDisplay userProfile={userProfile} />;
-  }
+    return userProfile ? <ProfileDisplay userProfile={userProfile} /> : <ProfileForm />;
+  } 
 };
 
 export default Profile;

@@ -126,14 +126,13 @@ const ProfileForm = () => {
 
 
 
-ProfileForm.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+// ProfileForm.propTypes = {
+//   images: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };
 
 export default ProfileForm;
