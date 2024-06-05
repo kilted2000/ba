@@ -32,9 +32,9 @@ app.get('/authorized', requiredScopes('read:users'), (req, res) => {
   res.send('Secured Resource');
 });
 
-app.get("/", (req, res) => {
-  res.json({ message: "Great Job! It works!" });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Great Job! It works!" });
+// });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
@@ -132,4 +132,4 @@ module.exports = app;
 //   // });
 // app.listen(port, () => console.log(`Server running on port ${port}`));
 
-// module.exports = app;
+// module.expor
