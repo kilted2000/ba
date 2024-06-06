@@ -19,16 +19,15 @@ app.use(express.json());
 
 
 const jwtCheck = auth({
-  audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
+  audience: 'http://localhost:8080/api/',
   issuerBaseURL: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/',
-  algorithms: ['RS256'],
-  jwksUri: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/.well-known/jwks.json'
+  algorithms: ['RS256']
 });
 
 app.use(jwtCheck);
 app.use('/', userRoutes);
 
-app.get('/authorized', requiredScopes('read:users'), (req, res) => {
+app.get('/authorized',(req, res) => {
   res.send('Secured Resource');
 });
 
@@ -132,4 +131,4 @@ module.exports = app;
 //   // });
 // app.listen(port, () => console.log(`Server running on port ${port}`));
 
-// module.expor
+// module.exports = app;
