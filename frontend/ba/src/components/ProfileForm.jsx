@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 //import { CldImage, CldUploadWidget } from "@cloudinary/url-gen";
