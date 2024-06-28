@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
+const axios = require('axios');
 const port = process.env.PORT || 8080;
 const app = express();
 const prisma = new PrismaClient();
@@ -31,6 +32,21 @@ app.get('/authorized',(req, res) => {
   res.send('Secured Resource');
 });
 
+app.get('/fetch-external-data', async (req, res) => {
+  const options = { 
+    method: "GET",
+    url: "http://path_to_your_api/",
+    headers: { "authorization": "Bearer TOKEN" },
+  };
+
+  try {
+    const response = await axios(options);
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching external data');
+  }
+});
 // app.get("/", (req, res) => {
 //   res.json({ message: "Great Job! It works!" });
 // });
