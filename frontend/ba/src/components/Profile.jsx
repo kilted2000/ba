@@ -20,8 +20,8 @@ const Profile = () => {
         const token = await getAccessTokenSilently({
           authorizationParams: {
             audience: 'https://dev-txcw3jo08qihcb5z.us.auth0.com/api/v2/',
-            scope: 'read:users',
-            prompt: 'consent',
+            scope: 'read:users write:users',
+            // prompt: 'consent',
           }
         });
         console.log('Token:', token);

@@ -28,6 +28,7 @@ const Loading = () => (
             type="rotate"></animateTransform>
         </path>
       </svg>
+      <p>Hang on, It'll get there!</p>
     </div>
   );
   
