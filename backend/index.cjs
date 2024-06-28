@@ -35,7 +35,7 @@ app.get('/authorized',(req, res) => {
 app.get('/fetch-external-data', async (req, res) => {
   const options = { 
     method: "GET",
-    url: "http://path_to_your_api/",
+    url: "http://localhost:8080/api/",
     headers: { "authorization": "Bearer TOKEN" },
   };
 
