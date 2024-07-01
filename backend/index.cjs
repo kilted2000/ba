@@ -28,17 +28,32 @@ const jwtCheck = auth({
 app.use(jwtCheck);
 app.use('/', userRoutes);
 
+app.get('/fetch-external-data', async (req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching data');
+  }
+});
+
 app.get('/authorized',(req, res) => {
   res.send('Secured Resource');
 });
 
-app.get('/fetch-external-data', async (req, res) => {
+// app.get('/fetch-external-data', async (req, res) => {
+//   const options = { 
+//     method: "GET",
+//     url: "http://localhost:8080/api/",
+//     headers: { "authorization": "Bearer TOKEN" },
+//   };
+app.get('/fetch-axios-data', async (req, res) => {
   const options = { 
     method: "GET",
-    url: "http://localhost:8080/api/",
+    url: "http://external-api-url.com", // Replace with the actual URL
     headers: { "authorization": "Bearer TOKEN" },
   };
-
   try {
     const response = await axios(options);
     res.json(response.data);
